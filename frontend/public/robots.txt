@@ -1,0 +1,11 @@
+# Robots.txt for VibeSpark Technologies
+# Domain: https://vibespark.in
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/*
+
+# Host & Sitemap Directives
+Host: https://vibespark.in
+Sitemap: https://vibespark.in/sitemap.xml

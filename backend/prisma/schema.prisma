@@ -1,0 +1,83 @@
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Admin {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String
+  name         String   @default("Admin")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("admins")
+}
+
+model Post {
+  id                String   @id @default(uuid())
+  slug              String   @unique
+  title             String   @db.VarChar(500)
+  subtitle          String?  @db.Text
+  summary           String?  @db.Text
+  content           String   @db.Text
+  category          String   @default("Web Development")
+  badge             String?  @default("Insights")
+  date              String   @default("")
+  readTime          String   @default("5 min read")
+  image             String   @db.Text
+  imageAlt          String?  @db.VarChar(500)
+  published         Boolean  @default(false)
+  views             Int      @default(0)
+  
+  // Author
+  authorName        String   @default("VibeSpark Squad")
+  authorRole        String   @default("Engineering Practice")
+  authorAvatar      String?  @db.Text
+
+  // SEO fields
+  seoTitle          String?  @db.VarChar(500)
+  metaDescription   String?  @db.Text
+  focusKeyword      String?  @db.VarChar(255)
+  canonicalUrl      String?  @db.VarChar(500)
+  primaryKeyword    String?  @db.VarChar(255)
+  secondaryKeywords String?  @db.VarChar(500)
+
+  // Structured JSON fields (takeaways, sections)
+  takeawaysJson     String?  @db.Text
+  sectionsJson      String?  @db.Text
+
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@map("posts")
+}
+
+model Enquiry {
+  id        String   @id @default(uuid())
+  name      String   @db.VarChar(255)
+  email     String   @db.VarChar(255)
+  phone     String   @db.VarChar(100)
+  company   String?  @default("") @db.VarChar(255)
+  service   String   @db.VarChar(255)
+  budget    String   @db.VarChar(255)
+  message   String?  @db.Text
+  status    String   @default("new") @db.VarChar(50)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("enquiries")
+}
+
+model Subscriber {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+
+  @@map("newsletter_subscribers")
+}

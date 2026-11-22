@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* Custom glassmorphism and gradient utility classes */
+.glass-nav {
+  background: rgba(8, 11, 53, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-nav-transparent {
+  background: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.glass-card-dark {
+  background: rgba(8, 11, 53, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.glass-card-light {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(214, 214, 255, 0.7);
+}
+
+/* Glowing accent effects */
+.glow-accent {
+  box-shadow: 0 0 50px -10px rgba(64, 60, 255, 0.45);
+}
+
+.glow-orange {
+  box-shadow: 0 0 30px -4px rgba(244, 119, 59, 0.55);
+}
+
+.glow-purple {
+  box-shadow: 0 0 40px -8px rgba(139, 124, 246, 0.4);
+}
+
+/* 3D Perspective Digital Floor Grid */
+.perspective-grid {
+  background-image: 
+    linear-gradient(to right, rgba(64, 60, 255, 0.18) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(64, 60, 255, 0.18) 1px, transparent 1px);
+  background-size: 3.5rem 3.5rem;
+  transform: perspective(500px) rotateX(60deg);
+  transform-origin: center top;
+  mask-image: radial-gradient(ellipse 75% 55% at 50% 25%, #000 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 55% at 50% 25%, #000 30%, transparent 80%);
+}
+
+/* Diagonal orange & indigo light streaks */
+.light-streak-orange {
+  background: linear-gradient(90deg, transparent, rgba(244, 119, 59, 0.4), rgba(255, 142, 86, 0.6), transparent);
+  filter: blur(24px);
+  transform: rotate(-35deg);
+}
+
+.light-streak-blue {
+  background: linear-gradient(90deg, transparent, rgba(37, 77, 255, 0.35), rgba(64, 60, 255, 0.5), transparent);
+  filter: blur(28px);
+  transform: rotate(-35deg);
+}
+
+/* Animated gradient text flow */
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-flow {
+  background-size: 200% auto;
+  animation: gradientFlow 4s ease infinite;
+}
+
+/* Very subtle, slow non-bouncing drift for floating cards */
+@keyframes subtle-drift-1 {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(-5px) translateX(3px);
+  }
+}
+
+@keyframes subtle-drift-2 {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(5px) translateX(-3px);
+  }
+}
+
+@keyframes subtle-drift-3 {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(-6px) translateX(-2px);
+  }
+}
+
+@keyframes subtle-drift-4 {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(4px) translateX(3px);
+  }
+}
+
+.animate-subtle-1 {
+  animation: subtle-drift-1 8s ease-in-out infinite;
+}
+
+.animate-subtle-2 {
+  animation: subtle-drift-2 9.5s ease-in-out infinite;
+}
+
+.animate-subtle-3 {
+  animation: subtle-drift-3 10.5s ease-in-out infinite;
+}
+
+.animate-subtle-4 {
+  animation: subtle-drift-4 8.8s ease-in-out infinite;
+}
+
+/* Ambient 3D floating ribbon animation */
+@keyframes ribbon-pulse {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scale(1.08) rotate(3deg);
+    opacity: 0.55;
+  }
+}
+
+.animate-ribbon {
+  animation: ribbon-pulse 12s ease-in-out infinite;
+}
+
+/* Infinite Marquee Track for Tech Stack */
+@keyframes marquee-flow {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-flow-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee-flow {
+  display: flex;
+  width: max-content;
+  animation: marquee-flow 28s linear infinite;
+}
+
+.animate-marquee-flow-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee-flow-reverse 28s linear infinite;
+}
+
+.animate-marquee-flow:hover,
+.animate-marquee-flow-reverse:hover {
+  animation-play-state: paused;
+}
+
+
